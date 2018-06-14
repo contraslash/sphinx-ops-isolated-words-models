@@ -8,7 +8,7 @@ import os
 __author__ = 'ma0'
 
 mp4_path = "output_folder"
-convert_path = "output_folder_wav"
+convert_path = "wav"
 so_path_separator = "/"
 
 

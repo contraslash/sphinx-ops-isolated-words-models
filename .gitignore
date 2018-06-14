@@ -2,6 +2,16 @@
 
 .idea
 
+bwaccumdir
+etc
+feat
+logdir
+model_parameters
+model_architecture
+qmanager
+result
+trees
+wav
+
 transcription.txt
 output_folder
-output_folder_wav
