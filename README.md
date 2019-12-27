@@ -1,24 +1,24 @@
-# Sphinx OPS Aphasia Models
+# Sphinx OPS Isolated Word Models
 
 This is the main repository to build an acoustic model for sphinx based on the 
-[Open Speech Corpus Aphasia Corpus](http://openspeechcorpus.contraslash.com/aphasia/list/).
+[Open Speech Corpus Isolated Word Corpus](http://openspeechcorpus.contraslash.com/isolated-words/list/).
 
-First execute the script `download_word_recordings.py`, this script will fetch all data from OPS.
+First execute the script `01_download_word_recordings.py`, this script will fetch all data from OPS.
 
-Then execute the script `convert_mp4_to_wav.py`, to execute this script you must have [FFMpeg](https://www.ffmpeg.org/)
+Then execute the script `02_convert_mp4_to_wav.py`, to execute this script you must have [FFMpeg](https://www.ffmpeg.org/)
 installed and on your path.
 
 After you need to prepare sphinx configuration data, to achieve this:
  
-Then you can call the script `configure_sphinx.py`, this script will configure almost all the files required by sphinx,
-but to create a custom language model you need to execute `generate_language_model.sh`.
+Then you can call the script `03_configure_sphinx.py`, this script will configure almost all the files required by sphinx,
+but to create a custom language model you need to execute `04_generate_language_model.sh`.
 
 Make sure you have [sphinxtrain](https://github.com/cmusphinx/sphinxtrain) installed on your pc
 
 Now execute
 
 ```bash
-sphinxtrain -t ops_aphasia setup
+sphinxtrain -t ops_isolated_words setup
 ```
 
 After this in your etc folder you will have a full structure or what you need for your project
@@ -41,5 +41,5 @@ To check the results
 
 ```bash
 
-pocketsphinx_continuous -hmm model_parameters/ops_aphasia.ci_semi/ -lm etc/ops_aphasia.lm.DMP -dict etc/ops_aphasia.dic -inmic yes   
+pocketsphinx_continuous -hmm model_parameters/ops_isolated_words.ci_semi/ -lm etc/ops_isolated_words.lm.DMP -dict etc/ops_isolated_words.dic -inmic yes   
 ```

@@ -99,5 +99,6 @@ def execute_script(etc_folder_name, name, transcription_file):
     o_test_file.close()
     o_train_file_ids.close()
 
+
 if __name__ == "__main__":
     execute_script(ETC_FOLDER_NAME, NAME, TRANSCRIPTION_FILE)

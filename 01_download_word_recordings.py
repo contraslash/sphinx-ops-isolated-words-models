@@ -29,17 +29,17 @@ if __name__ == '__main__':
 
     parser.add_argument(
         '--from',
-        default=None
+        default=1
     )
 
     parser.add_argument(
         '--to',
-        default=None
+        default=500
     )
 
     parser.add_argument(
         '--url',
-        default='http://openspeechcorpus.contraslash.com/api/words/list/'
+        default='http://openspeechcorpus.contraslash.com/api/isolated-words/list/'
     )
 
     parser.add_argument(
@@ -80,7 +80,7 @@ if __name__ == '__main__':
         for audio_data in json_data:
             audio_id = audio_data['audio']['id']
             file_name = "{}.mp4".format(join(args['output_folder'], str(audio_id)))
-            output_file.write("{},{}\n".format(file_name, audio_data['level_sentence']['text'].strip()))
+            output_file.write("{},{}\n".format(file_name, audio_data['isolated_word']['text'].strip()))
             if not exists(file_name):
                 print("Download file with id: {}".format(audio_id))
                 print("{}{}.mp4".format(args['s3_prefix'], audio_id))
