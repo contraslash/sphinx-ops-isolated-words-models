@@ -13,7 +13,10 @@ result
 trees
 wav
 
+ops_isolated_words
+
 transcription.txt
 output_folder
+corrupted_files.txt
 
 venv

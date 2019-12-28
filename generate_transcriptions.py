@@ -10,7 +10,7 @@ import codecs
 import random
 from common_filters import *
 
-NAME = "ops_aphasia"
+NAME = "ops_isolated_words"
 ETC_FOLDER_NAME = "etc/"
 
 TRANSCRIPTION_FILE = "transcription.txt"

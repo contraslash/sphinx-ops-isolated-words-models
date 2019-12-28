@@ -22,6 +22,7 @@ def download_file(url, local_filename):
                 #  f.flush() commented by recommendation from J.F.Sebastian
     return local_filename
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         "Download files from Open Speech Corpus"
@@ -56,6 +57,10 @@ if __name__ == '__main__':
         '--output_file',
         default='transcription.txt'
     )
+    parser.add_argument(
+        '--skip_storage',
+        action='store_true'
+    )
 
     args = vars(parser.parse_args())
     url = args['url']
@@ -76,12 +81,12 @@ if __name__ == '__main__':
         if not isdir(args['output_folder']):
             print("Output folder exists exists but is not a folder")
             exit(2)
-        output_file = codecs.open(args['output_file'], 'w+')
+        output_file = codecs.open(args['output_file'], 'a+')
         for audio_data in json_data:
             audio_id = audio_data['audio']['id']
             file_name = "{}.mp4".format(join(args['output_folder'], str(audio_id)))
             output_file.write("{},{}\n".format(file_name, audio_data['isolated_word']['text'].strip()))
-            if not exists(file_name):
+            if not exists(file_name) and not args.get("skip_storage", False):
                 print("Download file with id: {}".format(audio_id))
                 print("{}{}.mp4".format(args['s3_prefix'], audio_id))
                 try:
